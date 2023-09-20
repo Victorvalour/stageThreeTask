@@ -39,6 +39,9 @@ export default function Login() {
     listen();
  }    }, [])
 
+const handleSignUp = () => {
+    navigate("SignUp")
+}
 
 return   (
 <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
@@ -77,6 +80,7 @@ return   (
             <button className="rounded-lg w-full my-5 py-2 bg-rose-500 shadow-lg shadow-rose-500/50 hover:bg-rose-700 hover:shadow-rose-500/30 text-white font-semibold"
             type="submit">Sign In</button>
         </form>
+        <div className="mx-auto text-center text-white"><p>Don't have an account?</p> <button className="bg-purple-500 p-2 rounded font-bold hover:bg-purple-800" onClick={handleSignUp}>Create account</button></div>
        
 </div>
 </div>

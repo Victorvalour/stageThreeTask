@@ -88,7 +88,7 @@ const handleDragDrop = (results) => {
         <div {...provided.droppableProps} ref={provided.innerRef}  className="bg-red-600">
        
           
-            <div className="flex gap-5 flex-wrap">
+            <div className="flex gap-5 flex-wrap md:mx-52">
                  {mycars.map((car, index) => (
                     <Draggable draggableId={car.id} key={car.id} index={index}>
                         {(provided) => (
@@ -98,7 +98,7 @@ const handleDragDrop = (results) => {
                
                 </Draggable>
             ))}
-                     {provided.placeholder}
+              
             </div>
      
       
