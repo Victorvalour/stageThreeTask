@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import car1 from  "../images/car1.jpg"
 import car2 from  "../images/car2.jpg"
 import car3 from  "../images/car3.jpg"
@@ -58,8 +58,26 @@ const cars = [
 
 ]
 
+
 export default function Gallery() {
+
+    
+
+            //SEARCH FUNCTION
+const [query, setQuery] = useState('')
+
+            //DRAG AND DROP FUNCTIONS
     const [mycars, setMycars] = useState(cars);
+
+    useEffect(() => {
+        const getFilteredCars = (query) => {
+            if (!query) {
+           setMycars(cars)
+            } else {
+           setMycars(cars.filter(car => car.name.includes(query)));
+        }} 
+      getFilteredCars(query);
+    }, [query])
 
 const handleDragDrop = (results) => {
    const {source, destination, type} = results;
@@ -75,13 +93,18 @@ const handleDragDrop = (results) => {
 
         const [removedCar] = reorderedCars.splice(sourceIndex, 1);
         reorderedCars.splice(destinationIndex, 0, removedCar);
-
-        return setMycars(reorderedCars);
+setMycars(reorderedCars)
     }
 
   }
 
     return (<div>
+
+        {/* Search container*/}
+        <div> <div>Search your dream car</div>
+        <input type="text" onChange={e => setQuery(e.target.value)} className="border-2 border-green-500" /></div>
+
+
         <DragDropContext onDragEnd={handleDragDrop}>
         <Droppable droppableId="ROOT" type="group">  
         {(provided) => (
