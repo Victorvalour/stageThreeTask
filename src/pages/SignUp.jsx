@@ -36,7 +36,7 @@ return   (
 
         <form className="max-w-[400px] w-full mx-auto bg-gray-900 p-8 px-8 rounded-lg"
         onSubmit={signUp}>
-            <h2 className="text-4xl dark:text-white font-bold text-center">Create an account</h2>
+            <h2 className="text-4xl text-white font-bold text-center">Create an account</h2>
 
             {/* EMAIL */}
             <div className="flex flex-col text-gray-400 py-2">
