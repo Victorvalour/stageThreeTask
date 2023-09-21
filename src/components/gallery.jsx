@@ -170,7 +170,7 @@ setMycars(reorderedCars)
                     <Draggable draggableId={car.id} key={car.id} index={index}>
                         {(provided) => (
                              <div className="border-2 border-sky-500 shadow-[0_6px_8px_0_rgba(0,0,0,0.75)]
-                            " {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}><img src={car.src} alt="" className="w-60 h-60 md:w-96"/>
+                            " {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}><img src={car.src} alt="" className="w-40 h-40 md:w-96 sm:w-60"/>
                              <p className="bg-gray-400 text-lg text-center font-bold">{car.name}</p></div>
                         )}
                
