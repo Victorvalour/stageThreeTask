@@ -4,6 +4,9 @@ import { auth } from "../firebase"
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import AuthDetails from "../components/auth/AuthDetails";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -15,8 +18,19 @@ export default function Login() {
     const signIn = (e) => {
         //called on "signin"
         e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password).then((userCredential) => {console.log(userCredential)}).catch((error) => {
+        signInWithEmailAndPassword(auth, email, password).then((userCredential) => {console.log(userCredential);
+       }).catch((error) => {
             console.log(error);
+            toast.error('Error! Check your Login credentials', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         
         })
     }
@@ -25,7 +39,8 @@ export default function Login() {
         const listen = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setAuthUser(user);
-                navigate("home")
+                navigate("home");
+                toast("You are Logged in")
         
             } else {
                 setAuthUser(null);
@@ -54,7 +69,7 @@ return   (
 
         <form className="max-w-[400px] w-full mx-auto bg-gray-900 p-8 px-8 rounded-lg"
         onSubmit={signIn}>
-            <h2 className="text-4xl dark:text-white font-bold text-center">SIGN IN</h2>
+            <h2 className="text-4xl text-white font-bold text-center">SIGN IN</h2>
 
             {/* EMAIL */}
             <div className="flex flex-col text-gray-400 py-2">
@@ -74,7 +89,7 @@ return   (
             </div>
 
             <div className="flex justify-between text-gray-400 py-2">
-                <p className="flex items-center"><input className="mr-2" type="checkbox" />Remembr Me</p>
+                <p className="flex items-center"><input className="mr-2" type="checkbox" />Remember Me</p>
                 <p>Forgot Password</p>
             </div>
             <button className="rounded-lg w-full my-5 py-2 bg-rose-500 shadow-lg shadow-rose-500/50 hover:bg-rose-700 hover:shadow-rose-500/30 text-white font-semibold"
@@ -82,7 +97,9 @@ return   (
         </form>
         <div className="mx-auto text-center text-white"><p>Don't have an account?</p> <button className="bg-purple-500 p-2 rounded font-bold hover:bg-purple-800" onClick={handleSignUp}>Create account</button></div>
        
+        <ToastContainer />
 </div>
+
 </div>
 
     )

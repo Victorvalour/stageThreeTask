@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import LoginImage from "../images/login-image.jpeg"
 import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
@@ -10,9 +13,16 @@ export default function SignUp() {
     const signUp = (e) => {
         //called on "signin"
         e.preventDefault();
-        createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {console.log(userCredential)}).catch((error) => {
+        createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {console.log(userCredential)
+        toast("Account creation successful. LOGIN")}).catch((error) => {
             console.log(error)
         })
+    }
+    const navigate = useNavigate();
+    const handleSignIn = () => {
+        toast("Logged in");
+        navigate("/");
+  
     }
     
 return   (
@@ -52,6 +62,8 @@ return   (
             <button className="rounded-lg w-full my-5 py-2 bg-rose-500 shadow-lg shadow-rose-500/50 hover:bg-rose-700 hover:shadow-rose-500/30 text-white font-semibold"
             type="submit">Sign Up</button>
         </form>
+        <div className="mx-auto text-center text-white"><p>Have you created an account?</p> <button className="bg-purple-500 p-2 rounded font-bold hover:bg-purple-800" onClick={handleSignIn}>Login</button></div>
+        <ToastContainer />
 </div>
 </div>
 

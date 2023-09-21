@@ -31,8 +31,8 @@ if (authUser) {
             }).catch(error => console.log(error))
         }
 return (
-        <div className="bg-sky-700 ">
-            {authUser ? <div><p className="text-lg font-bold">{`Signed In as ${authUser.email}`}</p>  <button onClick={userSignOut} className="bg-green-400 border-4 border-black p-2">Sign Out</button></div> : <p>Signed Out</p>};
+        <div className="bg-gray-800 h-28 flex">
+            {authUser ? <div className=""><p className="text-lg m-2 text-white font-bold">{`Signed In as ${authUser.email}`}</p>  <button onClick={userSignOut} className="bg-red-400 border-4 border-black p-2 hover:bg-red-600">Sign Out</button></div> : <p>Signed Out</p>}
         </div>
     )
 }
