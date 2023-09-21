@@ -92,8 +92,6 @@ const cars = [
 
 export default function Gallery() {
 
-    
-
             //SEARCH FUNCTION
 const [query, setQuery] = useState('')
 

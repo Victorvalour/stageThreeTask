@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import AuthDetails from "../components/auth/AuthDetails";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 export default function Login() {
@@ -76,8 +78,8 @@ return   (
                 <label>Email</label>
                 <input className="text-white rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none" type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}  />
-            </div>
+                onChange={(e) => setEmail(e.target.value)}  /> 
+</div>
  
              {/*PASSWORD*/}
 

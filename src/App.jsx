@@ -4,9 +4,9 @@ import './App.css'
 import Login from "./pages/login.jsx"
 import Home from './pages/home.jsx'
 import SignUp from './pages/SignUp.jsx'
-import AuthDetails from './components/auth/AuthDetails'
 
-//<AuthDetails />
+
+
 function App() {
 
 
